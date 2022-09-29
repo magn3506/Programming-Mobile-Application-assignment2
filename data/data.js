@@ -29,5 +29,15 @@ export const Data = [
             'https://picsum.photos/500',
             'https://picsum.photos/600'
         ]
+    },
+    {
+        id: '4',
+        userName: 'Dranjoo123',
+        userImageURI: 'https://picsum.photos/100',
+        postImages: [
+            'https://picsum.photos/200',
+            'https://picsum.photos/500',
+            'https://picsum.photos/600'
+        ]
     }
 ]

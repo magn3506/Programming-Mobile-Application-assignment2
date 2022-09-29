@@ -1,18 +1,33 @@
-import { StyleSheet, View, Text, Image } from "react-native";
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, Image, Alert} from "react-native";
 import MCIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function PostFooter() {
+export default function PostFooter({likeCounterState: {likeCounter, setLikeCounter}, setIsCaptionModalOpen}) {
+  
+  const [isLiked, setIsLiked] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
+
   return (
     <View style={styles.ctaContainr}>
       <View style={styles.ctaLeftCol}>
         <Ionicons
-          style={[styles.ctaIcons, styles.ctaLeftCol.leftColIcon]}
+          onPress={() => {
+            setIsLiked(!isLiked)
+            if(isLiked) {
+              setLikeCounter(likeCounter - 1)
+            } else {
+              setLikeCounter(likeCounter + 1)
+            }
+          }}
+          style={[styles.ctaLeftCol.leftColIcon]}
           name="heart"
           size={25}
-          color="black"
+          color={isLiked ? 'red': 'grey'}
         />
         <Ionicons
+          onPress={() => setIsCaptionModalOpen(true)}
           style={[styles.ctaIcons, styles.ctaLeftCol.leftColIcon]}
           name="chatbubble-outline"
           size={25}
@@ -23,6 +38,7 @@ export default function PostFooter() {
           name="paper-plane-outline"
           size={25}
           color="black"
+          onPress={() => Alert.alert('Share post was clicked!')}
         />
       </View>
       <View style={styles.ctaMidCol}>
@@ -35,10 +51,10 @@ export default function PostFooter() {
       </View>
       <View style={styles.ctaRightCol}>
         <Ionicons
-          style={styles.ctaIcons}
+          onPress={() => setIsBookmarked(!isBookmarked)}
           name="ios-bookmark-outline"
           size={25}
-          color="black"
+          color={isBookmarked ? 'orange': 'grey'}
         />
       </View>
     </View>

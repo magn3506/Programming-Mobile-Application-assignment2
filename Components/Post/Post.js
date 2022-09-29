@@ -9,13 +9,15 @@ import {
 
 import PostHeader from "./PostHeader";
 import PostFooter from "./PostFooter";
-import PostDetails from './PostDetails'
+import PostDetails from "./PostDetails";
 
-export default function Post({postData: {userImageURI, userName, postImages}}) {
+export default function Post({
+  postData: { userImageURI, userName, postImages },
+  likeCounterState, setIsCaptionModalOpen
+}) {
   return (
     <View style={styles.wrapper}>
-      <PostHeader userDetails={{userName, userImageURI}}/>
-      {/*  CARUSEL IMAGES  */}
+      <PostHeader userDetails={{ userName, userImageURI }} />
       <View stlye={styles.carusel}>
         <ImageBackground
           style={styles.caruselImage}
@@ -25,7 +27,7 @@ export default function Post({postData: {userImageURI, userName, postImages}}) {
           }}
         />
       </View>
-      <PostFooter/>
+      <PostFooter likeCounterState={likeCounterState} setIsCaptionModalOpen={setIsCaptionModalOpen} />
       <PostDetails />
     </View>
   );
