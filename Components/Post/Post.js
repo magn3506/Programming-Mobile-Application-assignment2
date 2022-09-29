@@ -11,17 +11,17 @@ import PostHeader from "./PostHeader";
 import PostFooter from "./PostFooter";
 import PostDetails from './PostDetails'
 
-export default function Post() {
+export default function Post({postData: {userImageURI, userName, postImages}}) {
   return (
     <View style={styles.wrapper}>
-      <PostHeader/>
+      <PostHeader userDetails={{userName, userImageURI}}/>
       {/*  CARUSEL IMAGES  */}
       <View stlye={styles.carusel}>
         <ImageBackground
           style={styles.caruselImage}
           resizeMode="cover"
           source={{
-            uri: `https://picsum.photos/400`,
+            uri: `${postImages[0]}`,
           }}
         />
       </View>
@@ -34,7 +34,6 @@ export default function Post() {
 const styles = StyleSheet.create({
   // WRAPPER
   wrapper: {
-    backgroundColor: "#EEEEEE",
     width: "100%",
     padding: 12,
   },

@@ -1,17 +1,17 @@
 import { StyleSheet, View, Text, Image} from "react-native";
 import MCIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
-export default function PostHeader() {
+export default function PostHeader({userDetails: {userName, userImageURI}}) {
   return (
     <View style={styles.header}>
       <View style={styles.userDetails}>
         <Image
           style={styles.userImage}
           source={{
-            uri: `https://picsum.photos/600`,
+            uri: `${userImageURI}`,
           }}
         />
-        <Text style={styles.userName}>Username</Text>
+        <Text style={styles.userName}>{userName}</Text>
       </View>
       <View>
         <MCIcons
